@@ -83,9 +83,12 @@ jobs:
           REDIS_MASTER_SET: redis_sentinel
           REDIS_SENTINEL_QUORUM: 1
       redis-primary:
-        image: redis:latest
+        image: bitnami/redis:latest
         ports:
           - 16381:6379
+        env:
+          ALLOW_EMPTY_PASSWORD: "yes"
+          REDIS_REPLICATION_MODE: "master"
 
       redis-replica:
         image: bitnami/redis:latest
@@ -95,7 +98,7 @@ jobs:
           ALLOW_EMPTY_PASSWORD: "yes"
           REDIS_REPLICATION_MODE: "slave"
           REDIS_MASTER_HOST: redis-primary
-          REDIS_MASTER_PORT_NUMBER: "6379"
+          REDIS_MASTER_PORT_NUMBER: "16381"
       memcached:
         image: memcached:1.6.5
         ports:
