@@ -29,7 +29,7 @@ class RedisReplicationAdapterTest extends AbstractRedisAdapterTestCase
             self::markTestSkipped('REDIS_REPLICATION_HOSTS env var is not defined.');
         }
 
-        self::$redis = AbstractAdapter::createConnection('redis:?host['.str_replace(' ', ']&host[', $hosts).'][alias]=master', ['replication'=> 'predis', 'lazy' => true]);
+        self::$redis = AbstractAdapter::createConnection('redis:?host['.str_replace(' ', ']&host[', $hosts).'][role]=master', ['replication'=> true, 'lazy' => true]);
         self::$redis->setOption(\Redis::OPT_PREFIX, 'prefix_');
     }
 

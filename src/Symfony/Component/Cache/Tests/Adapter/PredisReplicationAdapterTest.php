@@ -19,6 +19,6 @@ class PredisReplicationAdapterTest extends AbstractRedisAdapterTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
-        self::$redis = new \Predis\Client(array_combine(['host', 'port'], explode(':', getenv('REDIS_HOST')) + [1 => 6379]), ['prefix' => 'prefix_']);
+        self::$redis = new \Predis\Client(array_combine(['host', 'port'], explode(':', getenv('REDIS_HOST')) + [1 => 6379]).'?alias=master', ['replication' => true, 'prefix' => 'prefix_']);
     }
 }
