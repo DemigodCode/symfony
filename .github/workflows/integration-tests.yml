@@ -157,6 +157,10 @@ jobs:
             root * /symfony/src/Symfony/Component/HttpFoundation/Tests/Fixtures/response-functional/
 
     steps:
+      - name: Verify Redis Replication
+        run: |
+          - echo "Checking Redis Replication..."
+          - docker exec redis-replica redis-cli info replication
       - name: Checkout
         uses: actions/checkout@v4
         with:
