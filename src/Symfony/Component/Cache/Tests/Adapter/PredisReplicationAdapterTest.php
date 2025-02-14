@@ -30,7 +30,7 @@ class PredisReplicationAdapterTest extends AbstractRedisAdapterTestCase
         foreach($hosts as $key => $host) {
             $hostInformation = array_combine(['host', 'port'], explode(':', $host));
             if($lastArrayKey === $key) {
-                $hostInformation['role'] = 'master';
+                $hostInformation['query'] = 'role=master';
             }
             $hostTable[] = $hostInformation;
         }
