@@ -159,8 +159,8 @@ jobs:
     steps:
       - name: Verify Redis Replication
         run: |
-          - docker exec redis-replica apt-get update && apt-get install -y redis-tools
-          - docker exec redis-replica redis-cli info replication
+          docker exec redis-replica apt-get update && apt-get install -y redis-tools
+          docker exec redis-replica redis-cli info replication
       - name: Checkout
         uses: actions/checkout@v4
         with:
