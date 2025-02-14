@@ -84,7 +84,6 @@ jobs:
           REDIS_SENTINEL_QUORUM: 1
       redis-primary:
         image: redis:latest
-        hostname: redis-primary
         ports:
           - 16381:6379
 
