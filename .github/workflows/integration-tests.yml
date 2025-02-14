@@ -90,7 +90,7 @@ jobs:
           ALLOW_EMPTY_PASSWORD: "yes"
           REDIS_REPLICATION_MODE: "master"
         options: >-
-          --name=redis-replica
+          --name=redis-primary
       redis-replica:
         image: bitnami/redis:latest
         ports:
