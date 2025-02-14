@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\Cache\Tests\Adapter;
 
+use Predis\Client;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\AbstractAdapter;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
@@ -38,7 +39,7 @@ class RedisReplicationAdapterTest extends AbstractRedisAdapterTestCase
             self::$redis->setOption(\Redis::OPT_SCAN, \Redis::SCAN_PREFIX);
         }
 
-        $this->assertInstanceOf(RedisClusterProxy::class, self::$redis);
+        $this->assertInstanceOf(Client::class, self::$redis);
         $adapter = new RedisAdapter(self::$redis, str_replace('\\', '.', __CLASS__), $defaultLifetime);
 
         return $adapter;
