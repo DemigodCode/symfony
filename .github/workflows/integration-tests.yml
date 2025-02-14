@@ -91,7 +91,11 @@ jobs:
         image: redis:latest
         ports:
           - 16382:6379
-        command: redis-server --slaveof redis-primary 6379
+          - env:
+              ALLOW_EMPTY_PASSWORD: "yes"
+              REDIS_REPLICATION_MODE: "slave"
+              REDIS_MASTER_HOST: redis-primary
+              REDIS_MASTER_PORT_NUMBER: "6379"
       memcached:
         image: memcached:1.6.5
         ports:
