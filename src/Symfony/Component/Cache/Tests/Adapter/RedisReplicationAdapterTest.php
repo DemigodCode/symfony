@@ -39,7 +39,7 @@ class RedisReplicationAdapterTest extends AbstractRedisAdapterTestCase
             self::$redis->setOption(\Redis::OPT_SCAN, \Redis::SCAN_PREFIX);
         }
 
-        $this->assertInstanceOf(Client::class, self::$redis);
+        $this->assertInstanceOf(\RedisArray::class, self::$redis);
         $adapter = new RedisAdapter(self::$redis, str_replace('\\', '.', __CLASS__), $defaultLifetime);
 
         return $adapter;
