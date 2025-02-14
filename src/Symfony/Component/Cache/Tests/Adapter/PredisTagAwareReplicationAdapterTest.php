@@ -34,4 +34,19 @@ class PredisTagAwareReplicationAdapterTest extends PredisReplicationAdapterTest
 
         return $adapter;
     }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testClearWithPrefix()
+    {
+        $cache = $this->createCachePool(0, __FUNCTION__);
+
+        $cache->save($cache->getItem('foo')->set('bar'));
+        sleep(1);
+        $this->assertTrue($cache->hasItem('foo'));
+
+        $cache->clear();
+        $this->assertFalse($cache->hasItem('foo'));
+    }
 }
