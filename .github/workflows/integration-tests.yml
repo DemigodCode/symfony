@@ -89,7 +89,8 @@ jobs:
         env:
           ALLOW_EMPTY_PASSWORD: "yes"
           REDIS_REPLICATION_MODE: "master"
-
+        options: >-
+          --name=redis-replica
       redis-replica:
         image: bitnami/redis:latest
         ports:
@@ -99,6 +100,8 @@ jobs:
           REDIS_REPLICATION_MODE: "slave"
           REDIS_MASTER_HOST: redis-primary
           REDIS_MASTER_PORT_NUMBER: "16381"
+        options: >-
+          --name=redis-replica
       memcached:
         image: memcached:1.6.5
         ports:
